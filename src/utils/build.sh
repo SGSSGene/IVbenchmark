@@ -22,7 +22,7 @@ fi
 #FLAGS="-march=native -O3 -DNDEBUG -ggdb"
 
 
-INCLUDES="-I . -I ../../src/ \
+INCLUDES="-I . -I ../../lib/IVio/src/ \
     -isystem../../lib/io2/include \
     -DSEQAN_HAS_ZLIB  -isystem../../lib/seqan/include \
     -DBIOCPP_IO_HAS_ZLIB -isystem../../lib/biocpp-io/include \
@@ -47,5 +47,5 @@ build () {
         mkdir -p $(dirname obj/$f)
         g++ ${ARGS} -c $f -o obj/$f.o
     done
-    g++ $(find obj/${folder} | grep \\\.o\$) $(find obj/ivio | grep \\\.o\$) -lz-ng -lz ${FLAGS} -o ${target}
+    g++ $(find obj/${folder} | grep \\\.o\$) $(find obj/IVio/src/ivio | grep \\\.o\$) -lz-ng -lz ${FLAGS} -o ${target}
 }
