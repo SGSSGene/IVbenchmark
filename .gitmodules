@@ -1,0 +1,18 @@
+[submodule "lib/IVio"]
+	path = lib/IVio
+	url = https://github.com/SGSSGene/IVio.git
+[submodule "lib/seqan3"]
+	path = lib/seqan3
+	url = https://github.com/seqan/seqan3.git
+[submodule "lib/seqtk"]
+	path = lib/seqtk
+	url = https://github.com/lh3/seqtk.git
+[submodule "lib/seqan"]
+	path = lib/seqan
+	url = https://github.com/seqan/seqan.git
+[submodule "lib/biocpp-core"]
+	path = lib/biocpp-core
+	url = https://github.com/biocpp/biocpp-core.git
+[submodule "lib/biocpp-io"]
+	path = lib/biocpp-io
+	url = https://github.com/biocpp/biocpp-io.git
