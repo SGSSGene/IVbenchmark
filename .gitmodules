@@ -16,3 +16,6 @@
 [submodule "lib/biocpp-io"]
 	path = lib/biocpp-io
 	url = https://github.com/biocpp/biocpp-io.git
+[submodule "lib/sdsl-lite"]
+	path = lib/sdsl-lite
+	url = https://github.com/xxsds/sdsl-lite
