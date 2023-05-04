@@ -1,6 +1,6 @@
 #include "Result.h"
 
-#include <ivio/mmap_reader.h>
+#include <ivio/detail/mmap_reader.h>
 
 constexpr static auto ccmap = []() {
     std::array<uint8_t, 256> c;

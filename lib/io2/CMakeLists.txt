@@ -11,15 +11,7 @@ endif ()
 project (io2 LANGUAGES CXX VERSION "${IO2_PROJECT_VERSION}"
              DESCRIPTION "io2 -- I/O library for seqan3 based on seqan2")
 
-add_library(${PROJECT_NAME} INTERFACE)
-target_include_directories(${PROJECT_NAME} INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
-target_link_libraries(${PROJECT_NAME} INTERFACE
-    seqan3::seqan3
-    seqan::seqan
-)
-add_library (${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+include(io2-config.cmake)
 
 if (${IO2_ROOT_PROJECT})
     enable_testing()

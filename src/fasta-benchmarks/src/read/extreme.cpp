@@ -1,6 +1,6 @@
 #include "Result.h"
 
-#include <ivio/mmap_reader.h>
+#include <ivio/detail/mmap_reader.h>
 
 auto extreme_bench(std::filesystem::path path) -> Result {
     auto reader = ivio::mmap_reader(path);

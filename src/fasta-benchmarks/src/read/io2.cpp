@@ -1,5 +1,5 @@
 #include "Result.h"
-#include "io2/seq_io_reader.h"
+#include <io2/seq_io_reader.h>
 
 auto io2_bench(std::filesystem::path _file) -> Result {
     Result result;
