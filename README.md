@@ -1,74 +1,31 @@
-# IO design ideas:
+# IVbenchmark
 
-## Motivation/Goals
-The SeqAn3 library targets 2 audiences:
-1. People who want to use SeqAn3 to write their own tool.
-2. People who want to implement a new cool algorithm for research (bachelor, master, phd, papers).
-n. It is not targeted at people who can get elaborated training session on how to use the software (like in enterprise systems for companies)
+Benchmarks to compare I/O between seqan, seqan3, bio, setkq and IVio.
 
-From this we can derive a few ideas:
-- reduce the number of configuration points (best just having one)
-- reduce the amount of configuration parameters (best having perfect default parameters and not making them configurable ;-))
-- names for options, everything that is named is much easier to use and remember
+## Results
+|        format           | | seqan2        | seqan3    | io2     | bio     | seqtk       | ivio          | direct         |
+|:------------------------|-|--------------:|:---------:|:-------:|:-------:|:-----------:|:-------------:|:--------------:|
+| reading .bam            | |     552MB/s   |   225MB/s | 511MB/s |         |             |   **707MB/s** |                |
+| reading .sam            | |     119MB/s   |   135MB/s | 116MB/s |         |             |   **482MB/s** |                |
+| reading .bcf            | |               |           |         |   2MB/s |             |    **12MB/s** |                |
+| reading .vcf            | |     187MB/s   |           |         | 165MB/s |             |   **401MB/s** |                |
+| reading .fastq          | |     239MB/s   |   172MB/s |         | 441MB/s |             |   **887MB/s** |                |
+| reading .fastq.gz       | |     185MB/s   |   158MB/s |         | 268MB/s |             |   **329MB/s** |                |
+| reading short.fasta     | |     398MB/s   |   243MB/s | 114MB/s | 342MB/s |   494MB/s   |   **888MB/s** |___1'294MB/s___ |
+| reading short.fasta.gz  | |     170MB/s   |   148MB/s |         | 154MB/s | **184MB/s** |     182MB/s   |                |
+| reading short.fasta.fai | |               |           |         |         |             |   **515MB/s** |                |
+| reading long.fasta      | |     512MB/s   |   547MB/s | 150MB/s | 404MB/s | 1'045MB/s   | **1'253MB/s** |___1'470MB/s___ |
+| reading long.fasta.gz   | |     260MB/s   |   266MB/s |         | 218MB/s | **312MB/s** |     301MB/s   |                |
+| reading long.fasta.fai  | |               |           |         |         |             | **1'264MB/s** |                |
+| writing .fasta          | | **1'745MB/s** | 1'233MB/s |         |         |             |   1'377MB/s   |                |
+| writing .fasta.gz       | |   1'013MB/s   |   923MB/s |         |         |             | **1'257MB/s** |                |
 
+* **seqan2**: based on seqan 2.4.0
+* **seqan3**: based on seqan3 commit "#a719fb0" from 13. Feb 2023
+* **io2**: an io implementation for seqan3 based on seqan2
+* **bio**: based on biocpp-core v0.6.0 nad biocpp-io
+* **ivio**: implemented in this repo
+* **ivio (idx)**: implemented in this repo, but using an index when accessing each record
+* **direct**: skipping certain parsing step in ivio ("maximum speed" for this task)
 
-Old Ideas for IO2 can be found [here](IO2.md)
-
-
-## IO3
-Additional Ideas of io3 vesus the io2 are:
- - as plain as possible, no alphabets at all
- - emphasise on string_view, guaranteeing every contigous memory.
- - giving up header only, for fast include/compilation
-
-
-### Fasta - Input/Output:
-sketch how code could look like:
-```
-/* Iterating over the reader gives us a io3::fasta::record_view
- * struct record_view {
- *     std::string_view id;
- *     std::string_view seq;
- * };
- */
-
-auto in = io3::fasta::reader {
-    .input = "myfile.fasta", // could also be a std::istream
-};
-for (auto const& record : in) {
-    record.id;
-    record,seq;
-}
-```
-```
-/* For writting we also need to pass a io3::fasta::record_view or anything that is convertible to one. For convinience a io3::fasta::record is provided:
- *  struct record {
- *     std::string id;
- *     std::string seq;
- *  };
- */
-auto out = io3::fasta::writer {
-    .output = "myfile.out.fasta", // could also be a std::ostream
-};
-out.write(record{.id = "someid", .seq = "ACGTACGTACGT"});
-```
-```
-/* Reading a a file and replacing all 'A' with 'N's
- */
-{
-auto in = io3::fasta::reader {
-    .input = "myfile.fasta", // could also be a std::istream
-};
-auto out = io3::fasta::writer {
-    .output = "myfile.out.fasta", // could also be a std::ostream
-};
-for (auto const& view : in) {
-    auto record = io3::fasta::record{view};
-    for (auto& c: record.seq) {
-        if (c == 'A') c = 'N';
-    }
-    out.write(record);
-}
-```
-
-###
+**Test Machine**: AMD Ryzen 9 5900HS
