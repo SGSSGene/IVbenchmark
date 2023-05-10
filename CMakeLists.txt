@@ -28,4 +28,9 @@ add_subdirectory(src/vcf-benchmarks)
 file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/scripts/evaluate.sh      ${CMAKE_CURRENT_BINARY_DIR}/evaluate.sh SYMBOLIC)
 file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/scripts/run-benchmark.sh ${CMAKE_CURRENT_BINARY_DIR}/run-benchmark.sh SYMBOLIC)
 file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/scripts/prepareFiles.sh ${CMAKE_CURRENT_BINARY_DIR}/prepareFiles.sh SYMBOLIC)
-add_subdirectory(data)
+
+#add_custom_target(prepare_data ./prepareFiles.sh)
+add_custom_target(prepare_data ALL)
+add_custom_command(TARGET prepare_data PRE_BUILD
+   COMMAND prepareFiles.sh
+)
