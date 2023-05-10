@@ -4,11 +4,19 @@
 # This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
 # shipped with this file.
 # -----------------------------------------------------------------------------------------------------
+cmake_minimum_required (VERSION 3.16)
 
-cmake_minimum_required (VERSION 3.12)
+project (utils)
 
-if (TARGET seqan3::seqan3)
-    return()
-endif()
+add_library(utils INTERFACE)
 
-find_package (SeqAn3 REQUIRED HINTS ${CMAKE_CURRENT_LIST_DIR}/seqan3/build_system)
+target_link_libraries(utils INTERFACE
+    biocpp::core
+    biocpp::io
+    io2::io2
+    ivio::ivio
+    seqan2::seqan2
+    seqan3::seqan3
+    seqtk::seqtk
+)
+target_include_directories(utils INTERFACE SYSTEM ..)

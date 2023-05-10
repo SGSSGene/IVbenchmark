@@ -13,7 +13,7 @@ endif()
 
 add_library(seqan2 INTERFACE)
 target_include_directories(seqan2 INTERFACE SYSTEM
-    ../../lib/seqan/include
+    ${CMAKE_CURRENT_LIST_DIR}/seqan/include
 )
 target_compile_definitions(seqan2 INTERFACE -DSEQAN_HAS_ZLIB)
 add_library(seqan2::seqan2 ALIAS seqan2)

@@ -4,14 +4,13 @@
 // This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
 // shipped with this file.
 // -----------------------------------------------------------------------------------------------------
-#include "../fasta-benchmarks/src/write/dna5_rank_view.h"
-
 #include <chrono>
 #include <filesystem>
 #include <iostream>
 #include <string_view>
-#include <vector>
 #include <sys/resource.h>
+#include <utils/dna5_rank_view.h>
+#include <vector>
 
 void seqan2_bench(std::filesystem::path pathIn, std::filesystem::path pathOut, size_t threadNbr);
 void bio_bench(std::filesystem::path pathIn, std::filesystem::path pathOut, size_t threadNbr);

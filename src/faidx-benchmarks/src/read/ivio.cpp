@@ -5,10 +5,10 @@
 // shipped with this file.
 // -----------------------------------------------------------------------------------------------------
 #include "Result.h"
-#include "dna5_rank_view.h"
 
 #include <ivio/faidx/reader.h>
 #include <ivio/fasta/reader.h>
+#include <utils/dna5_rank_view.h>
 
 auto ivio_bench(std::filesystem::path file) -> Result {
     Result result;

@@ -5,9 +5,9 @@
 // shipped with this file.
 // -----------------------------------------------------------------------------------------------------
 #include "Result.h"
-#include "../fasta-benchmarks/src/read/dna5_rank_view.h"
 
 #include <ivio/bcf/reader.h>
+#include <utils/dna5_rank_view.h>
 
 auto ivio_bench(std::filesystem::path file, size_t threadNbr) -> Result {
     Result result;

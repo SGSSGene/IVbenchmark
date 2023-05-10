@@ -1,3 +1,9 @@
+# -----------------------------------------------------------------------------------------------------
+# Copyright (c) 2006-2023, Knut Reinert & Freie Universität Berlin
+# Copyright (c) 2016-2023, Knut Reinert & MPI für molekulare Genetik
+# This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
+# shipped with this file.
+# -----------------------------------------------------------------------------------------------------
 cmake_minimum_required (VERSION 3.16)
 
 project (fasta-benchmark VERSION 1.0.0)
@@ -14,30 +20,15 @@ add_executable(fasta-benchmark-read
     src/read/direct.cpp
     src/read/extreme.cpp
 )
-target_link_libraries(fasta-benchmark-read
-    biocpp::core
-    biocpp::io
-    io2::io2
-    ivio::ivio
-    seqan2::seqan2
-    seqan3::seqan3
-    seqtk::seqtk
-)
+target_link_libraries(fasta-benchmark-read utils)
+
 add_executable(fasta-benchmark-write
     src/write/main.cpp
     src/write/seqan3.cpp
     src/write/ivio.cpp
     src/write/seqan2.cpp
 )
-target_link_libraries(fasta-benchmark-write
-    biocpp::core
-    biocpp::io
-    io2::io2
-    ivio::ivio
-    seqan2::seqan2
-    seqan3::seqan3
-    seqtk::seqtk
-)
+target_link_libraries(fasta-benchmark-write utils)
 
 add_executable(fasta-benchmark-read_stream
     src/read_stream/main.cpp
@@ -47,12 +38,4 @@ add_executable(fasta-benchmark-read_stream
     src/read_stream/io2.cpp
     src/read_stream/bio.cpp
 )
-target_link_libraries(fasta-benchmark-read_stream
-    biocpp::core
-    biocpp::io
-    io2::io2
-    ivio::ivio
-    seqan2::seqan2
-    seqan3::seqan3
-    seqtk::seqtk
-)
+target_link_libraries(fasta-benchmark-read_stream utils)

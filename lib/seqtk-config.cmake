@@ -13,7 +13,7 @@ endif()
 
 add_library(seqtk INTERFACE)
 target_include_directories(seqtk INTERFACE SYSTEM
-    ../../lib/seqtk
+    lib/seqtk
 )
 target_compile_definitions(seqtk INTERFACE)
 add_library(seqtk::seqtk ALIAS seqtk)

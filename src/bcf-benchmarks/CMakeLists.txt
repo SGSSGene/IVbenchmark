@@ -1,3 +1,9 @@
+# -----------------------------------------------------------------------------------------------------
+# Copyright (c) 2006-2023, Knut Reinert & Freie Universität Berlin
+# Copyright (c) 2016-2023, Knut Reinert & MPI für molekulare Genetik
+# This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
+# shipped with this file.
+# -----------------------------------------------------------------------------------------------------
 cmake_minimum_required (VERSION 3.16)
 
 project (bcf-benchmark VERSION 1.0.0)
@@ -7,27 +13,12 @@ add_executable(bcf-benchmark-read
     src/read/ivio.cpp
     src/read/bio.cpp
 )
-target_link_libraries(bcf-benchmark-read
-    biocpp::core
-    biocpp::io
-    io2::io2
-    ivio::ivio
-    seqan2::seqan2
-    seqan3::seqan3
-    seqtk::seqtk
-)
+target_link_libraries(bcf-benchmark-read utils)
+
 add_executable(bcf-benchmark-copy
     src/copy/main.cpp
     src/copy/ivio.cpp
     src/copy/seqan2.cpp
     src/copy/bio.cpp
 )
-target_link_libraries(bcf-benchmark-copy
-    biocpp::core
-    biocpp::io
-    io2::io2
-    ivio::ivio
-    seqan2::seqan2
-    seqan3::seqan3
-    seqtk::seqtk
-)
+target_link_libraries(bcf-benchmark-copy utils)

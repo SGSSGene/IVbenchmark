@@ -1,3 +1,9 @@
+// -----------------------------------------------------------------------------------------------------
+// Copyright (c) 2006-2023, Knut Reinert & Freie Universität Berlin
+// Copyright (c) 2016-2023, Knut Reinert & MPI für molekulare Genetik
+// This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
+// shipped with this file.
+// -----------------------------------------------------------------------------------------------------
 #include <chrono>
 #include <filesystem>
 #include <fstream>
@@ -6,7 +12,7 @@
 #include <vector>
 #include <sys/resource.h>
 #include <ivio/fasta/reader.h>
-#include "../read/dna5_rank_view.h"
+#include <utils/dna5_rank_view.h>
 
 void seqan2_bench(std::filesystem::path file, std::vector<std::tuple<std::string, std::vector<uint8_t>>> const& data);
 void seqan3_bench(std::filesystem::path file, std::vector<std::tuple<std::string, std::vector<uint8_t>>> const& data);
