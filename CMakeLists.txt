@@ -4,7 +4,6 @@
 # This file may be used, modified and/or redistributed under the terms of the 3-clause BSD-License
 # shipped with this file.
 # -----------------------------------------------------------------------------------------------------
-
 cmake_minimum_required (VERSION 3.16)
 
 project (ivio-benchmark VERSION 1.0.0)
