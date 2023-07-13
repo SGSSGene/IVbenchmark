@@ -16,7 +16,8 @@ DATA=data
 methods=(seqan2 seqan3 io2 ivio)
 files=(${DATA}/sampled.bam)
 
-source run-benchmark.sh bam read
+# run all test with 6 threads (seqan2 doesn't allow to set the thread number at run time)
+source run-benchmark.sh bam read 6
 
 #########
 # BCF
@@ -24,9 +25,9 @@ source run-benchmark.sh bam read
 methods=(bio ivio)
 files=(${DATA}/sampled.bcf)
 
-source run-benchmark.sh bcf read
+source run-benchmark.sh bcf read 6
 
-source run-benchmark.sh bcf copy
+source run-benchmark.sh bcf copy 6
 
 #########
 # FAIDX

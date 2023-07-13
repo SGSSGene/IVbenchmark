@@ -5,7 +5,7 @@ Benchmarks to compare I/O between seqan, seqan3, bio, setkq and IVio.
 ## Results
 |        format           | | seqan2        | seqan3    | io2     | bio     | seqtk       | ivio          | direct         |
 |:------------------------|-|--------------:|:---------:|:-------:|:-------:|:-----------:|:-------------:|:--------------:|
-| reading .bam            | |     552MB/s   |   225MB/s | 511MB/s |         |             |   **707MB/s** |                |
+| reading .bam            | |   **783MB/s** |   278MB/s | 744MB/s |         |             |     719MB/s   |                |
 | reading .sam            | |     119MB/s   |   135MB/s | 116MB/s |         |             |   **482MB/s** |                |
 | reading .bcf            | |               |           |         |   2MB/s |             |    **12MB/s** |                |
 | reading .vcf            | |     187MB/s   |           |         | 165MB/s |             |   **401MB/s** |                |

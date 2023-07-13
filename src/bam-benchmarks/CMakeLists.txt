@@ -16,3 +16,4 @@ add_executable(bam-benchmark-read
     src/read/io2.cpp
 )
 target_link_libraries(bam-benchmark-read utils)
+target_compile_definitions(bam-benchmark-read PUBLIC SEQAN_BGZF_NUM_THREADS=6)
