@@ -1,6 +1,6 @@
 [submodule "lib/IVio"]
 	path = lib/IVio
-	url = https://github.com/SGSSGene/IVio.git
+	url = https://github.com/iv-project/IVio.git
 [submodule "lib/seqan3"]
 	path = lib/seqan3
 	url = https://github.com/seqan/seqan3.git
